@@ -4,14 +4,14 @@ on: [push]
 jobs:
   get-num-square:
     runs-on: ubuntu-latest
-    name: return the number square
+    name: Return the number square
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Fetch num squared
         id: get_square
-        uses: ./# Uses an action in the root directory
+        uses: ./ # Uses an action in the root directory
         with:
           num : 11
-      - num: Print the square 
+      - name: Print the square 
         run: echo "${{ steps.get_square.outputs.num_squared }}"
