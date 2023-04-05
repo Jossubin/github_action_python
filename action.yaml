@@ -6,18 +6,19 @@ inputs :
     default : "1"
 outputs :
   num_squared :
+    description: 'Square of the input'
     value : ${{ steps.get-square.outputs.num_squared }}
 runs:
   using : 'composite'
   steps:
    - name: Install python
-    uses: action/setup-python@v4
-    with:
-      python-version: '3.10'
-   - name: Install dependencies
+     uses: action/setup-python@v4
+     with:
+       python-version: '3.10'
+   - name: Install Dependencies
      run: pip install -r requirements.txt
      shell: bash
-   - name: Pass input to shell
+   - name: Pass Input to Shell
      run: |
       echo "INPUT_NUM=${{ inputs.num }}" >> $GITHUB_ENV
      shell: bash
